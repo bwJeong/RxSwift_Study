@@ -37,4 +37,12 @@ Observable<Int>.from([1, 2, 3, 4, 5])
 // 4
 // 5
 ```
-- create
+- create: 커스텀 Observable을 생성
+```{.swift}
+Observable<Int>.create { observer in
+  observer.onNext(~)
+  observer.onError(~)
+  observer.onCompleted(~)
+  return Disposables.create()
+}
+```
