@@ -12,9 +12,9 @@
 
 #### Observable 생성
 - just: 하나의 element를 Observable로 만들고 반환
-'''{.swift}
+```{.swift}
 Observable<Int>.just(7)
-'''
+```
 - of: 가변적인 element를 Observable로 만들고 반환
 - from: 배열의 각 element를 Observable로 만들고 반환
 - create
