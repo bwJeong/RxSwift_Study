@@ -57,7 +57,8 @@ Observable<Int>.create { observer in
 
 #### Observable 구독
 - subscribe를 이용해 Observable을 구독함으로써 비동기적으로 이벤트를 감지
-- dispose를 이용해 구독을 취소(**메모리릭을 방지하기 위함!**)
+- disposed를 이용해 구독을 취소(**메모리릭을 방지하기 위함!**)
+- DisposeBag을 사용함으로써 효율적으로 한 번에 disposable들을 관리할 수 있다.
 ```swift
 let disposeBag = DisposeBag()
 let observable = Observable<Int>.just(7)
