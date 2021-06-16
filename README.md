@@ -47,6 +47,7 @@ Observable<Int>.create { observer in
   //observer.onError(~)
   
   observer.onCompleted()
+  
   return Disposables.create()
 }
 // 1
