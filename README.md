@@ -59,7 +59,6 @@ Observable<Int>.create { observer in
 ```swift
 let disposeBag = DisposeBag()
 let observable = Observable<Int>.just(7)
-
 observable
   .subscribe(onNext: { num in
     print(num)
@@ -69,4 +68,6 @@ observable
     print("Completed!")
   })
   .disposed(by: disposeBag)
+  // 7
+  // Completed!
 ```
