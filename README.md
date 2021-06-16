@@ -14,7 +14,19 @@
 - just: 하나의 element를 Observable로 만들고 반환
 ```{.swift}
 Observable<Int>.just(7)
+// 7
 ```
 - of: 가변적인 element를 Observable로 만들고 반환
+```{.swift}
+Observable<Int>.of(1, 2, 3, 4, 5)
+// 1
+// 2
+// 3
+// 4
+// 5
+
+Observable<Int>.of([1, 2, 3, 4, 5])
+// [1, 2, 3, 4, 5]
+```
 - from: 배열의 각 element를 Observable로 만들고 반환
 - create
