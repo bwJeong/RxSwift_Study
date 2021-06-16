@@ -54,3 +54,19 @@ Observable<Int>.create { observer in
 // 2
 // 3
 ```
+
+#### Observable 구독
+```swift
+let disposeBag = DisposeBag()
+let observable = Observable<Int>.just(7)
+
+observable
+  .subscribe(onNext: { num in
+    print(num)
+  }, onError: { err in
+    print(err)
+  }, onCompleted: {
+    print("Completed!")
+  })
+  .disposed(by: disposeBag)
+```
