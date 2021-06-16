@@ -29,4 +29,12 @@ Observable<Int>.of([1, 2, 3, 4, 5])
 // [1, 2, 3, 4, 5]
 ```
 - from: 배열의 각 element를 Observable로 만들고 반환
+```{.swift}
+Observable<Int>.from([1, 2, 3, 4, 5])
+// 1
+// 2
+// 3
+// 4
+// 5
+```
 - create
