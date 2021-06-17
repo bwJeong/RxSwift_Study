@@ -7,6 +7,8 @@
   - subscribe와 동일한 기능을 수행
   - 항상 메인스레드에서 수행되기 때문에, UI 작업을 처리할 때 특별히 스레드 관리를 해주지 않아도 된다는 장점이 있음
 ```swift
+// 간단한 bind 예제
+
 @IBOutlet weak var label: UILabel!
 @IBOutlet weak var button: UIButton!
 
@@ -22,3 +24,4 @@ override func viewDidLoad() {
     .disposed(by: disposeBag)
 }
 ```
+
