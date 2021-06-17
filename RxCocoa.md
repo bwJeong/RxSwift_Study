@@ -40,9 +40,9 @@ class ViewController: UIViewController {
   }
   
   private func bindCollectionView() {
-    // 구현해둔 viewModel의 Observable<UIImage?> 타입인 image 프로퍼티에 접근
+    // 구현해둔 viewModel의 BehaviorRelay<[UIImage?]> 타입인 images 프로퍼티에 접근
     // collectionView.rx.items(cellIdentifier: String, cellType: Cell.Type)를 활용한 collectionView 바인딩
-    viewModel.image.bind(to: collectionView.rx.items(cellIdentifier: "customCell", cellType: CustomCollectionViewCell.self)) { index, element, cell in
+    viewModel.images.bind(to: collectionView.rx.items(cellIdentifier: "customCell", cellType: CustomCollectionViewCell.self)) { index, element, cell in
       cell.imageView.image = element
     }
     .disposed(by: disposeBag)
