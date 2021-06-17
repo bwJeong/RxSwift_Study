@@ -81,6 +81,39 @@ observable
 - PublishSubject
   - 초기값 지정 X
   - 구독한 이후의 순간부터 방출된 이벤트를 전달
+```swift
+let disposeBag = DisposeBag()
+let subject = PublishSubject<Int>()
+subject.onNext(1)
+
+subject
+  .subscribe(onNext: { num in
+  print(num)
+  })
+  .disposed(by: disposeBag)
+  
+subject.onNext(2)
+subject.onNext(3)
+// 2
+// 3
+```
 - BehaviorSubject
   - 초기값 지정 O
-  - 구독한 순간, 초기값으로 설정된 next 이벤트를 방출하고 이후부터 방출된 이벤트를 전달 
+  - 구독한 순간, 이전 next 이벤트를 방출하고 이후부터 방출된 이벤트를 전달
+```swift
+let disposeBag = DisposeBag()
+let subject = BehaviorSubject<Int>(value: 0)
+subject.onNext(1)
+
+subject
+  .subscribe(onNext: { num in
+  print(num)
+  })
+  .disposed(by: disposeBag)
+  
+subject.onNext(2)
+subject.onNext(3)
+// 1
+// 2
+// 3
+```
