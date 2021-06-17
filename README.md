@@ -183,7 +183,15 @@ subjectB.onNext("강인")
 ```
 
 ### Scheduler
+- Main Thread: MainScheduler.instance
+  - ex) UI 작업 
+- Background Thread: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())
+  - ex) 네트워크 요청
+
+#### Scheduler의 종류
 - observe(on:)
   - Operator(map, filter 등...)를 이용한 작업 및 subscribe 작업을 다른 Scheduler에서 하고 싶을 때 사용
+  - 호출하는 위치에 영향을 받음!
 - subscribe(on:)
   - Observable을 특정 Scheduler에서 생성하고 싶을 때 사용
+  - 호출하는 위치에 영향을 받지 않음!
