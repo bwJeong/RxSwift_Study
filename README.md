@@ -154,7 +154,7 @@ subjectA.onNext("이")
 subjectB.onNext("강인")
 
 // 손흥민
-// 흥민이
+// 이흥민
 // 이강인
 ```
 - zip
