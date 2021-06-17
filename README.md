@@ -15,6 +15,7 @@
 ```swift
 Observable<Int>.just(7)
 
+// 구독하지 않았으므로 값은 방출되지 않음!
 // 7
 ```
 - of: 가변적인 element를 Observable로 만들고 반환
