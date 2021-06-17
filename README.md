@@ -1,6 +1,8 @@
 # RxSwift_Study
 
 ## RxSwift
+[1. Observable](#observable)
+[2. Subject](#subject)
 
 ### Observable
 - 이벤트(next, error, completed)들을 비동기적으로 생성하는 기능
