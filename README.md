@@ -85,6 +85,7 @@ observable
 ```
 ### Subject
 - Observable과 Observer 두 가지 역할을 모두 수행(**이벤트의 emit과 subscribe 역할을 모두 수행!**)
+- next, error, completed 생명주기
 
 #### Subject의 종류
 - PublishSubject
