@@ -137,21 +137,44 @@ subject.onNext(3)
 - CombineLatest
   - 각 Observable에 대해서, 서로 이벤트를 방출할 때에 가장 최신의 이벤트를 결합하여 전달
   - 모든 Observable이 이벤트가 있을 경우에만 이벤트를 결합하여 전달
-```swift
+ ```swift
 let disposeBag = DisposeBag()
-let subjectA = PublishSubject<Bool>()
-let subjectB = PublishSubject<Bool>()
+let subjectA = PublishSubject<String>()
+let subjectB = PublishSubject<String>()
 
-subjectA.onNext(true)
-
-Observable.combineLatest(subjectA, subjectB) { $0 && $1 }
-  .subscribe(onNext: { b in
-    print(b)
+Observable.combineLatest(subjectA, subjectB) { $0 + $1 }
+  .subscribe(onNext: { fullName in
+    print(fullName)
   })
   .disposed(by: disposeBag)
   
-subjectB.onNext(true)
+subjectA.onNext("손")
+subjectB.onNext("흥민")
+subjectA.onNext("이")
+subjectB.onNext("강인")
 
-// true
+// 손흥민
+// 흥민이
+// 이강인
 ```
 - zip
+  - 각 Observable에 대해서, 서로 하나씩의 이벤트를 모두 방출했을 때 해당 이벤트들을 결합하여 전달
+ ```swift
+let disposeBag = DisposeBag()
+let subjectA = PublishSubject<String>()
+let subjectB = PublishSubject<String>()
+
+Observable.zip(subjectA, subjectB) { $0 + $1 }
+  .subscribe(onNext: { fullName in
+    print(fullName)
+  })
+  .disposed(by: disposeBag)
+  
+subjectA.onNext("손")
+subjectB.onNext("흥민")
+subjectA.onNext("이")
+subjectB.onNext("강인")
+
+// 손흥민
+// 이강인
+```
