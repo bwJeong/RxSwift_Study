@@ -180,3 +180,9 @@ subjectB.onNext("강인")
 // 손흥민
 // 이강인
 ```
+
+### Scheduler
+- observe(on:)
+  - Operator(map, filter 등...)를 이용한 작업 및 subscribe 작업을 다른 Scheduler에서 하고 싶을 때 사용
+- subscribe(on:)
+  - Observable을 특정 Scheduler에서 생성하고 싶을 때 사용
