@@ -79,4 +79,8 @@ observable
 
 #### Subject의 종류
 - PublishSubject
+  - 초기값 지정 X
+  - 구독한 이후의 순간부터 방출된 이벤트를 전달
 - BehaviorSubject
+  - 초기값 지정 O
+  - 구독한 순간, 이전 이벤트를 재방출하고 이후부터 방출된 이벤트를 전달 
