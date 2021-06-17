@@ -21,6 +21,7 @@ Observable<Int>.just(7)
 ```swift
 Observable<Int>.of(1, 2, 3, 4, 5)
 
+// 구독하지 않았으므로 값은 방출되지 않음!
 // 1
 // 2
 // 3
@@ -34,6 +35,7 @@ Observable<Int>.of([1, 2, 3, 4, 5])
 ```swift
 Observable<Int>.from([1, 2, 3, 4, 5])
 
+// 구독하지 않았으므로 값은 방출되지 않음!
 // 1
 // 2
 // 3
@@ -54,6 +56,7 @@ Observable<Int>.create { observer in
   return Disposables.create()
 }
 
+// 구독하지 않았으므로 값은 방출되지 않음!
 // 1
 // 2
 // 3
