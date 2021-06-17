@@ -183,15 +183,34 @@ subjectB.onNext("강인")
 ```
 
 ### Scheduler
-- Main Thread: MainScheduler.instance
-  - ex) UI 작업 
-- Background Thread: ConcurrentDispatchQueueScheduler(queue: DispatchQueue.global())
-  - ex) 네트워크 요청
+- Main Thread (ex. UI 작업)
+  - MainScheduler
+- Background Thread (ex. 네트워크 요청)
+  - ConcurrentDispatchQueueScheduler
 
 #### Scheduler의 종류
 - observe(on:)
   - Operator(map, filter 등...)를 이용한 작업 및 subscribe 작업을 다른 Scheduler에서 하고 싶을 때 사용
-  - 호출하는 위치에 영향을 받음!
+  - 호출한 위치에서 아래 방향으로 영향을 줌!
+```swift
+@IBOutlet weak var label: UILabel!
+@IBOutlet weak var button: UIButton!
+
+let disposeBag = DisposeBag()
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+  
+  // button을 Tap할 경우, label의 text가 async하게 "Hello, Swift!"로 변경됨
+  button.rx.tap
+    .observe(on: MainScheduler.instance)
+    .map { "Hello, Swift!" }
+    .subscribe(onNext: { [weak self] str in
+      self?.label.text = str
+    })
+    .disposed(by: disposeBag)
+}
+```
 - subscribe(on:)
   - Observable을 특정 Scheduler에서 생성하고 싶을 때 사용
-  - 호출하는 위치에 영향을 받지 않음!
+  - 호출한 위치에 영향을 받지 않음!
