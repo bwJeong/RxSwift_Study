@@ -134,3 +134,24 @@ subject.onNext(3)
 ```
 
 ### Combining Operator
+- CombineLatest
+  - 각 Observable에 대해서, 서로 이벤트를 방출할 때에 가장 최신의 이벤트를 결합하여 전달
+  - 모든 Observable이 이벤트가 있을 경우에만 이벤트를 결합하여 전달
+```swift
+let disposeBag = DisposeBag()
+let subjectA = PublishSubject<Bool>()
+let subjectB = PublishSubject<Bool>()
+
+subjectA.onNext(true)
+
+Observable.combineLatest(subjectA, subjectB) { $0 && $1 }
+  .subscribe(onNext: { b in
+    print(b)
+  })
+  .disposed(by: disposeBag)
+  
+subjectB.onNext(true)
+
+// true
+```
+- zip
