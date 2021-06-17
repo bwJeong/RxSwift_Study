@@ -2,6 +2,7 @@
 
 ## RxSwift
 [1. Observable](#observable)
+
 [2. Subject](#subject)
 
 ### Observable
