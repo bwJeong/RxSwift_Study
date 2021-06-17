@@ -214,3 +214,25 @@ override func viewDidLoad() {
 - subscribe(on:)
   - Observable을 특정 Scheduler에서 생성하고 싶을 때 사용
   - 호출한 위치에 영향을 받지 않음!
+```swift
+let disposeBag = DisposeBag()
+
+Observable<Int>.create { observer in
+  observer.onNext(1)
+  observer.onNext(2)
+  observer.onNext(3)
+
+  return Disposables.create()
+}
+.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)) // Observable 생성과정을 Background Thread에서 처리함
+.observe(on: MainScheduler.instance) // 아래의 Operator 및 subscribe 작업을 Main Thread에서 처리함
+.map { "\($0) 입니다." }
+.subscribe(onNext: { str in
+  print(str)
+})
+.disposed(by: disposeBag)
+
+// 1 입니다.
+// 2 입니다.
+// 3 입니다.
+```
