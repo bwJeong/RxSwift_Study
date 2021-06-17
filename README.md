@@ -224,7 +224,7 @@ Observable<Int>.create { observer in
 
   return Disposables.create()
 }
-.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)) // Observable 생성과정을 Background Thread에서 처리함
+.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)) // 위의 Observable 생성과정을 Background Thread에서 처리함
 .observe(on: MainScheduler.instance) // 아래의 Operator 및 subscribe 작업을 Main Thread에서 처리함
 .map { "\($0) 입니다." }
 .subscribe(onNext: { str in
