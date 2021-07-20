@@ -201,7 +201,7 @@ let disposeBag = DisposeBag()
 override func viewDidLoad() {
   super.viewDidLoad()
   
-  // button을 Tap할 경우, label의 text가 async하게 "Hello, Swift!"로 변경됨
+  // button을 Tap할 경우, label의 text가 "Hello, Swift!"로 변경됨
   button.rx.tap
     .observe(on: MainScheduler.instance)
     .map { "Hello, Swift!" }
