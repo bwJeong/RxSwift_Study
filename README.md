@@ -124,7 +124,7 @@ subject.onNext(1)
 
 subject
   .subscribe(onNext: { num in
-  print(num)
+    print(num)
   })
   .disposed(by: disposeBag)
   
